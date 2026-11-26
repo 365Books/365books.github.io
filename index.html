@@ -182,7 +182,7 @@
 <footer id="contact">
   <div class="wrap">
     <span class="fw">365<span>Books</span></span>
-    <span>Contact: <a href="mailto:365bookz@gmail.com">365bookz@gmail.com</a></span>
+    <span>Contact: <a href="mailto:info@365Books.com">info@365Books.com</a></span>
     <span>© <span id="y"></span> 365Books · A Good Book, Every Day.</span>
   </div>
 </footer>
@@ -193,7 +193,7 @@
   document.getElementById('nform').addEventListener('submit', function(e){
     e.preventDefault();
     var em = document.getElementById('email').value;
-    window.location.href = 'mailto:365bookz@gmail.com?subject=' + encodeURIComponent('Notify me at launch') +
+    window.location.href = 'mailto:info@365Books.com?subject=' + encodeURIComponent('Notify me at launch') +
       '&body=' + encodeURIComponent('Please let me know when 365Books opens: ' + em);
     document.getElementById('msg').textContent = "Thank you! We'll let you know when we open.";
   });
