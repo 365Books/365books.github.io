@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>365Books — A Good Book, Every Day.</title>
+<meta name="description" content="365Books is an online bookstore. Discover your next great read — opening soon.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0B2D5B;--navy-deep:#082247;--red:#D71920;--red-dark:#B3141A;--soft:#F8F9FC;--ink:#14213D;--muted:#5B6576;--line:#E3E7EF}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Poppins,system-ui,sans-serif;background:#fff;color:var(--ink);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+  .logo img{height:52px;width:auto;display:block}
+  nav{display:flex;gap:30px;font-size:15px;font-weight:500}
+  nav a:hover{color:var(--red)}
+  .tools{display:flex;gap:18px;align-items:center}
+  .tools a{position:relative;display:flex;color:var(--ink)}
+  .tools a:hover{color:var(--red)}
+  .badge{position:absolute;top:-6px;right:-8px;background:var(--red);color:#fff;font-size:10px;font-weight:700;
+         width:17px;height:17px;border-radius:50%;display:grid;place-items:center}
+
+  /* Hero */
+  .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+  .hero-text{padding:80px 0;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
+  .soon{display:inline-block;align-self:flex-start;border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;font-weight:600;
+        letter-spacing:2px;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  h1{font-weight:800;font-size:clamp(40px,5.6vw,68px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px}
+  h1 span{color:var(--red);display:block}
+  .tagline{font-size:20px;font-weight:500;margin-bottom:30px;display:flex;align-items:center;gap:14px}
+  .tagline::after{content:"";width:34px;height:2px;background:#fff;opacity:.8}
+  .btn{display:inline-flex;align-self:flex-start;white-space:nowrap;align-items:center;gap:10px;background:var(--red);color:#fff;font-weight:600;font-size:17px;
+       padding:14px 28px;border-radius:10px;border:0;cursor:pointer;font-family:inherit}
+  .btn:hover{background:var(--red-dark)}
+  .hero-img{position:absolute;right:0;top:0;bottom:0;width:52%;
+            background:url(hero.jpg) center/cover no-repeat}
+  .hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,45,91,.55) 30%,rgba(11,45,91,0) 60%)}
+
+  /* Feature strip */
+  .features{background:var(--soft);border-bottom:1px solid var(--line)}
+  .features .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .feat{display:flex;align-items:center;gap:14px;padding:26px 18px;border-right:1px solid var(--line)}
+  .feat:last-child{border-right:0}
+  .feat svg{flex:none;color:var(--red)}
+  .feat b{display:block;font-size:16px;color:var(--navy)}
+  .feat small{font-size:13px;color:var(--muted)}
+
+  /* Categories */
+  section.cats{padding:72px 0}
+  h2{font-weight:800;font-size:34px;letter-spacing:-.6px;color:var(--navy);margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:30px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:28px 24px;background:#fff;transition:.2s}
+  .card:hover{border-color:var(--red);box-shadow:0 8px 24px rgba(11,45,91,.08);transform:translateY(-2px)}
+  .card .bar{width:36px;height:4px;background:var(--red);border-radius:2px;margin-bottom:16px}
+  .card b{display:block;font-size:19px;color:var(--navy);margin-bottom:4px}
+  .card p{font-size:14px;color:var(--muted)}
+
+  /* Notify */
+  .notify{background:var(--navy);color:#fff;border-radius:18px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;margin-bottom:72px}
+  .notify h3{font-size:28px;font-weight:700;line-height:1.2}
+  .notify p{color:#C9D3E6;margin-top:6px}
+  form{display:flex;gap:10px;flex:1;max-width:460px;min-width:260px}
+  input{flex:1;padding:14px 16px;border:0;border-radius:10px;font:inherit;font-size:15px}
+  #msg{font-size:13px;color:#C9D3E6;margin-top:8px}
+
+  footer{background:var(--navy-deep);color:#B8C3D9;padding:34px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .fw{font-weight:800;font-size:22px;letter-spacing:-.5px;color:#fff}
+  .fw span{color:var(--red)}
+  footer a:hover{color:#fff}
+
+  @media (max-width:900px){
+    nav{display:none}
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-img{width:100%;opacity:.25}
+    .hero-img::before{background:none}
+    .features .wrap,.grid{grid-template-columns:1fr 1fr}
+    .feat:nth-child(2){border-right:0}
+  }
+  @media (max-width:520px){
+    .logo img{height:36px}
+    .features .wrap,.grid{grid-template-columns:1fr}
+    .feat{border-right:0;border-bottom:1px solid var(--line)}
+    form{flex-direction:column}
+    .notify{padding:32px 24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo"><img src="logo.png" alt="365Books"></a>
+    <nav>
+      <a href="#shop">Books</a>
+      <a href="#shop">Best Sellers</a>
+      <a href="#shop">New Arrivals</a>
+      <a href="#shop">Children's Books</a>
+      <a href="#shop">Deals</a>
+    </nav>
+    <div class="tools">
+      <a href="#notify" aria-label="Search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+      <a href="#notify" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <a href="#notify" aria-label="Cart"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="badge">0</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="soon">OPENING SOON</span>
+      <h1>Discover Your Next <span>Great Read</span></h1>
+      <p class="tagline">A Good Book, Every Day.</p>
+      <a href="#notify" class="btn">Shop Books
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="wrap">
+    <div class="feat">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-9-1.5v14c4-.5 7 0 9 1.5 2-1.5 5-2 9-1.5v-14c-4-.5-7 0-9 1.5Z"/><path d="M12 6v14"/></svg>
+      <div><b>Books</b><small>Thousands of titles</small></div>
+    </div>
+    <div class="feat">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m12 6 1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2L8.8 8.3 11 8Z"/><path d="m8.5 14-1.5 7 5-2.5 5 2.5-1.5-7"/></svg>
+      <div><b>Best Sellers</b><small>Reader favorites</small></div>
+    </div>
+    <div class="feat">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+      <div><b>Deals</b><small>Great books, great prices</small></div>
+    </div>
+    <div class="feat">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M9 17h6V6H3v11h2"/><path d="M15 9h4l2 3v5h-2"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+      <div><b>Fast Shipping</b><small>Packed with care</small></div>
+    </div>
+  </div>
+</div>
+
+<section class="cats" id="shop">
+  <div class="wrap">
+    <h2>Shop by Category</h2>
+    <p class="sub">Our shelves are being stocked — here's a look at what's coming.</p>
+    <div class="grid">
+      <div class="card"><div class="bar"></div><b>Fiction</b><p>Classics, bestsellers and new releases</p></div>
+      <div class="card"><div class="bar"></div><b>Children's Books</b><p>Picture books to young adult</p></div>
+      <div class="card"><div class="bar"></div><b>Nonfiction</b><p>History, science, biography</p></div>
+      <div class="card"><div class="bar"></div><b>Bargain Books</b><p>Great reads at low prices</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="notify" id="notify">
+    <div>
+      <h3>We're opening soon.</h3>
+      <p>Leave your email and be the first to know when 365Books launches.</p>
+    </div>
+    <div style="flex:1;max-width:460px;min-width:260px">
+      <form id="nform">
+        <input type="email" id="email" placeholder="Your email address" required>
+        <button type="submit" class="btn">Notify me</button>
+      </form>
+      <p id="msg">No spam. Just one email when we launch.</p>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="fw">365<span>Books</span></span>
+    <span>Contact: <a href="mailto:365bookz@gmail.com">365bookz@gmail.com</a></span>
+    <span>© <span id="y"></span> 365Books · A Good Book, Every Day.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // Temporary: opens the visitor's email app. Will be connected to a newsletter service later.
+  document.getElementById('nform').addEventListener('submit', function(e){
+    e.preventDefault();
+    var em = document.getElementById('email').value;
+    window.location.href = 'mailto:365bookz@gmail.com?subject=' + encodeURIComponent('Notify me at launch') +
+      '&body=' + encodeURIComponent('Please let me know when 365Books opens: ' + em);
+    document.getElementById('msg').textContent = "Thank you! We'll let you know when we open.";
+  });
+</script>
+</body>
+</html>
